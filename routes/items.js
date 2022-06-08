@@ -5,8 +5,12 @@ const router = express.Router();
 const Item = require("../models/Item");
 
 router.get("/", async (req, res, next) => {
-  const items = await Item.find();
-  res.json({ result: items });
+  try {
+    const items = await Item.find();
+    res.json({ result: items });
+  } catch (error) {
+    next(error);
+  }
 });
 
 //module.exports = router;

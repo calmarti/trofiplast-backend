@@ -6,6 +6,7 @@ var logger = require("morgan");
 require("dotenv").config();
 require("./lib/connectMongoose");
 
+
 // console.log(process.env);
 
 var app = express();
@@ -20,8 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use('/apiv1/items', require('./routes/items'));
-
+app.use("/apiv1/items", require("./routes/items"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -36,6 +36,9 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  if (req.originalUrl.startsWith("/api")) {
+    res.json({ error: err.message });
+  }
   res.render("error");
 });
 

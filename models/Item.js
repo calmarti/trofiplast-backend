@@ -7,7 +7,7 @@ const itemSchema = mongoose.Schema({
   species: { type: String },
   location: { type: String },
   country: { type: String },
-  date: { type: Date },
+  date: { type: Date },   //type preeliminar, tal vez será un custom type
 });
 
 const Item = mongoose.model("Item", itemSchema);
