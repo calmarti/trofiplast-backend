@@ -6,7 +6,6 @@ var logger = require("morgan");
 require("dotenv").config();
 require("./lib/connectMongoose");
 
-
 // console.log(process.env);
 
 var app = express();
@@ -34,12 +33,20 @@ app.use(function (err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
+  
+  // if is an api call render the error json 
   if (req.originalUrl.startsWith("/api")) {
-    res.json({ error: err.message });
+    res.status.json({ error: err.message });
+    return;
   }
+  // if is a browser call render the error view
   res.render("error");
+  
+  //  else {
+  //   res.render("error");
+  // }
+
 });
 
 module.exports = app;
