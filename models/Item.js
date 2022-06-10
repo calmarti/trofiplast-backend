@@ -8,7 +8,12 @@ const itemSchema = mongoose.Schema({
   location: { type: String },
   country: { type: String },
   date: { type: Date }, //type preeliminar, tal vez será un custom type
-  reference: { type: String },
+  //date 2
+  //date 3
+  items: { type: String }, //ask meaning
+  reference: { type: String }, 
+  href: {type: String }, //type preeliminar, tal vez será un custom type
+  image: { type: String },
 });
 
 const Item = mongoose.model("Item", itemSchema);
