@@ -26,7 +26,7 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const item = new Item({
-      order: req.body.order,
+      group: req.body.taxonomic_group,
       family: req.body.family,
       genus: req.body.genus,
       species: req.body.species,
@@ -42,4 +42,5 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//module.exports = router;
+
+module.exports = router;

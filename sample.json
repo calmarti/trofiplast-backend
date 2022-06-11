@@ -1,0 +1,60 @@
+{
+    "summary": [
+        {
+            "taxonomic_group": "Fish",
+            "family": "Myctophidae",
+            "genus": "Diaphus",
+            "species": "Diaphus metopoclampus",
+            "area": "Strait of Sicily, Mediterranean Sea",
+            "country": "Italy",
+            "date1": "00/10/2010",
+            "date2": "00/05/2011",
+            "summary": "1 white plastic item reported. The incidence of plastics reported was 0,3% (n=296)",
+            "reference": "Romeo, T., Peda, C., Fossi, M. C., Andaloro, F., & Battaglia, P. (2016). First record of plastic debris in the stomach of Mediterranean lanternfishes. Acta Adriatica, 57(1), 115-124",
+            "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
+        },
+        {
+            "taxonomic_group": "Fish",
+            "family": "Myctophidae",
+            "genus": "Hygophum",
+            "species": "Hygophum benoiti",
+            "area": "Strait of Sicily, Mediterranean Sea",
+            "country": "Italy",
+            "date1": "00/10/2010",
+            "date2": "00/05/2011",
+            "date3": "2014",
+            "summary": "5 plastic items reported, where 40% was white, 40% was hyaline and 20% black. The incidence of plastics reported was 6,8% (n=73)",
+            "reference": "Romeo, T., Peda, C., Fossi, M. C., Andaloro, F., & Battaglia, P. (2016). First record of plastic debris in the stomach of Mediterranean lanternfishes. Acta Adriatica, 57(1), 115-124",
+            "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
+        },
+        {
+            "taxonomic_group": "Fish",
+            "family": "Myctophidae",
+            "genus": "Myctophum",
+            "species": "Myctophum punctatum",
+            "area": "Strait of Sicily, Mediterranean Sea",
+            "country": "Italy",
+            "date1": "00/10/2010",
+            "date2": "00/05/2011",
+            "date3": "2014",
+            "summary": "3 plastic items reported, where 33% were hyaline, 33% grey and 34% black. The incidence of plastics reported was 4,2% (n=71)",
+            "reference": "Romeo, T., Peda, C., Fossi, M. C., Andaloro, F., & Battaglia, P. (2016). First record of plastic debris in the stomach of Mediterranean lanternfishes. Acta Adriatica, 57(1), 115-124",
+            "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
+        },
+        {
+            "taxonomic_group": "Fish",
+            "family": "Myctophidae",
+            "genus": "Electrona",
+            "species": "Electrona risso",
+            "area": "Strait of Sicily, Mediterranean Sea",
+            "country": "Italy",
+            "date1": "00/10/2010",
+            "date2": "00/05/2011",
+            "date3": "2014",
+            "summary": "5 plastic fragments reported, where 40% was hyaline, 40% yellow and 20% brown. The incidence of plastics reported was 6,1% (n=82)",
+            "reference": "Romeo, T., Peda, C., Fossi, M. C., Andaloro, F., & Battaglia, P. (2016). First record of plastic debris in the stomach of Mediterranean lanternfishes. Acta Adriatica, 57(1), 115-124",
+            "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
+        }
+    ]
+
+}
