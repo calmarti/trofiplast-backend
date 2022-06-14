@@ -10,16 +10,16 @@ function changeDateFormat(value) {
   } else {
     const splittedValue = value.split("/", 3);
     if (splittedValue.length !== 1) {
-      const formattedValue = new Date(splittedValue[2], splittedValue[1]);
-    } else {
-      const formattedValue = new Date(splittedValue[0]);
+      return new Date(splittedValue[2], splittedValue[1]);
+        } else {
+      return new Date(splittedValue[0]);
     }
   }
 }
 
 
 const itemSchema = mongoose.Schema({
-  taxonomic_group /*taxonomic group*/: {
+  taxonomic_group: {
     type: String,
     required: true,
     index: true,
@@ -29,7 +29,7 @@ const itemSchema = mongoose.Schema({
   species: { type: String, required: true, index: true },
   area: { type: String, required: true },
   country: { type: String, required: true, index: true },
-  date1: { type: Date, set: changeDateFormat }, //cambiar formato del TYPE de ser necesario con plugin "mongoose-plugin-date-format" o bien cambiar el formato al recuperar de la bd con un custom getter (changeDateFormat)
+  date1: { type: Date, set: changeDateFormat }, 
   date2: { type: Date, set: changeDateFormat },
   date3: { type: Date, set: changeDateFormat },
   summary: { type: String },

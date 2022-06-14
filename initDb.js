@@ -3,8 +3,6 @@ require("dotenv").config();
 const conn = require("./lib/connectMongoose");
 const fs = require("fs");
 
-//TODO: inicialización falla al intentar hacer el cast de date1 (por ser String y no Date), ¿meter un setter en el Schema Type y en el excel separar en campo año y campo mes?
-
 const sample = "./sample.json";
 const Item = require("./models/Item");
 
@@ -24,6 +22,7 @@ const loadJson = async function (file) {
     }
     const data = JSON.parse(rawData).items;
     console.log(`Initialization file ${file} parsed`);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
