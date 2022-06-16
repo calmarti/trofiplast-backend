@@ -35,9 +35,9 @@ app.use(function (err, req, res, next) {
 
   res.status(err.status || 500);
   
-  // if is an api call render the error json 
+  // if it's an api call render the error json 
   if (req.originalUrl.startsWith("/api")) {
-    res.status.json({ error: err.message });
+    res.json({ error: err.message });
     return;
   }
   // if is a browser call render the error view

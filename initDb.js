@@ -5,7 +5,7 @@ const fs = require("fs");
 const readline = require("readline");
 const sample = "./sample.json";
 const Item = require("./models/Item");
-const { resolve } = require("path");
+
 
 const confirm = function (question) {
   return new Promise((resolve, reject) => {

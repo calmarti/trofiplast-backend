@@ -11,12 +11,11 @@ function changeDateFormat(value) {
     const splittedValue = value.split("/", 3);
     if (splittedValue.length !== 1) {
       return new Date(splittedValue[2], splittedValue[1]);
-        } else {
+    } else {
       return new Date(splittedValue[0]);
     }
   }
 }
-
 
 const itemSchema = mongoose.Schema({
   taxonomic_group: {
@@ -29,7 +28,7 @@ const itemSchema = mongoose.Schema({
   species: { type: String, required: true, index: true },
   area: { type: String, required: true },
   country: { type: String, required: true, index: true },
-  date1: { type: Date, set: changeDateFormat }, 
+  date1: { type: Date, set: changeDateFormat },
   date2: { type: Date, set: changeDateFormat },
   date3: { type: Date, set: changeDateFormat },
   summary: { type: String },
@@ -37,6 +36,20 @@ const itemSchema = mongoose.Schema({
   href: { type: String }, //type preeliminar, tal vez será un custom type
   image: { type: String },
 });
+
+itemSchema.statics.customFind = async function (filters, sort, skip, limit) {
+  const query = Item.find(filters)
+  query.sort(sort);
+  query.skip(skip);
+  query.limit(limit);
+  const result = {};
+  //atributos necesarios para query por rangos de fechas
+    
+  result.items = await query.exec();
+
+  console.log('total', result.count)
+  return result;
+};
 
 const Item = mongoose.model("Item", itemSchema);
 
