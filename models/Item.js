@@ -42,12 +42,11 @@ itemSchema.statics.customFind = async function (filters, sort, skip, limit) {
   query.sort(sort);
   query.skip(skip);
   query.limit(limit);
-  const result = {};
+  let result = {};
   //atributos necesarios para query por rangos de fechas
     
-  result.items = await query.exec();
+  result = await query.exec();
 
-  console.log('total', result.count)
   return result;
 };
 
