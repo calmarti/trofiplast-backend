@@ -27,6 +27,7 @@ const itemSchema = mongoose.Schema({
   genus: { type: String, required: true, index: true },
   species: { type: String, required: true, index: true },
   area: { type: String, required: true },
+  //origin: {type: String, required: true},  //seawater, freshwater, land
   country: { type: String, required: true, index: true },
   date1: { type: Date, set: changeDateFormat },
   date2: { type: Date, set: changeDateFormat },
