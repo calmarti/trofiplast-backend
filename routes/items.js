@@ -14,8 +14,8 @@ router.get("/", async (req, res, next) => {
     const skip = parseInt(req.query.start) || 0;
     const limit = parseInt(req.query.limit) || 10000; //reemplazar por el count de registros actualizado
 
-    //TODO: búsqueda por rango de fecha con 'date' ==>  busca en date1, date2 y date3
-
+  
+    //TODO: paradójicamente, campos "from" y "to" no permiten una búsqueda por rango de fecha
    
     if (req.query.taxonomic_group)
       filters.taxonomic_group = req.query.taxonomic_group;
@@ -24,10 +24,11 @@ router.get("/", async (req, res, next) => {
     if (req.query.species) filters.species = req.query.species;
     if (req.query.area) filters.area = req.query.area;
     if (req.query.country) filters.country = req.query.country;
+    if (req.query.origin) filters.origin = req.query.origin;
 
-    if (req.query.date) filters.date = req.query.date;
+    if (req.query.from) filters.from = parseInt(req.query.from);
+    if (req.query.to) filters.to = parseInt(req.query.to);
     
- 
 
     const result = await Item.customFind(filters, sort, skip, limit);
     res.json({ result: result });
