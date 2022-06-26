@@ -17,9 +17,8 @@ const mongoose = require("mongoose");
 //   }
 // }
 
-
 const itemSchema = mongoose.Schema({
-  taxonomic_group: {
+  group: {
     type: String,
     required: true,
     index: true,

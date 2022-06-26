@@ -1,7 +1,7 @@
 {
     "items": [
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Myctophidae",
             "genus": "Diaphus",
             "species": "Diaphus metopoclampus",
@@ -15,7 +15,7 @@
             "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Myctophidae",
             "genus": "Hygophum",
             "species": "Hygophum benoiti",
@@ -29,7 +29,7 @@
             "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Myctophidae",
             "genus": "Myctophum",
             "species": "Myctophum punctatum",
@@ -43,7 +43,7 @@
             "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Myctophidae",
             "genus": "Electrona",
             "species": "Electrona risso",
@@ -57,7 +57,7 @@
             "href": "http://jadran.izor.hr/acta/pdf/57_1_pdf/57_1_9.pdf"
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Serranidae",
             "genus": "Plectropomus",
             "species": "Plectropomus maculatus",
@@ -72,7 +72,7 @@
             "notas": "No da fecha el artículo y por tanto la fecha sería anterior a 1974 (<1974)"
         },
         {
-            "taxonomic_group": "Terrestrial Mammal",
+            "group": "Terrestrial Mammal",
             "family": "Suidae",
             "genus": "Sus",
             "species": "Sus scrofa",
@@ -86,7 +86,7 @@
             "href": "http://hdl.handle.net/10261/128938"
         },
         {
-            "taxonomic_group": "Terrestrial Mammal",
+            "group": "Terrestrial Mammal",
             "family": "Cervidae",
             "genus": "Dama",
             "species": "Dama dama",
@@ -100,7 +100,7 @@
             "href": "http://hdl.handle.net/10261/128938"
         },
         {
-            "taxonomic_group": "Terrestrial Mammal",
+            "group": "Terrestrial Mammal",
             "family": "Cervidae",
             "genus": "Cervus",
             "species": "Cervus elaphus",
@@ -114,7 +114,7 @@
             "href": "http://hdl.handle.net/10261/128938"
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Ictaluridae ",
             "genus": "Ictalurus",
             "species": "Ictalurus punctatus",
@@ -128,7 +128,7 @@
             "href": "https://doi.org/10.1674/amid-175-01-47-54.1 "
         },
         {
-            "taxonomic_group": "Fish",
+            "group": "Fish",
             "family": "Moronidae",
             "genus": "Dicentrarchus",
             "species": "Dicentrarchus labrax",

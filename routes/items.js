@@ -6,7 +6,6 @@ const Item = require("../models/Item");
 
 router.get("/", async (req, res, next) => {
   try {
-
     console.log(req.query);
 
     const filters = {};
@@ -14,11 +13,21 @@ router.get("/", async (req, res, next) => {
     const skip = parseInt(req.query.start) || 0;
     const limit = parseInt(req.query.limit) || 10000; //reemplazar por el count de registros actualizado
 
-  
-    //TODO: paradójicamente, campos "from" y "to" no permiten una búsqueda por rango de fecha
-   
-    if (req.query.taxonomic_group)
-      filters.taxonomic_group = req.query.taxonomic_group;
+    //Tools to build a search by range of dates (years):
+    //first of all change the from and to fields to a sigle range field (Array)
+    //get start-year and end-year in req.query (strings)
+    //create an array with a function along these lines:
+    // var range = [];
+    //for (var i = lowEnd; i <= highEnd; i++) {
+    //range.push(i);
+    //}
+    //send this array somehow as a parameter in a mongo query object
+    //use some setter function (schema) to do something like:
+    //if rangeArr.find(elem=>dbArr.includes(elem)) true then there's a match
+    //and the matched registers are returned
+
+    if (req.query.group)
+      filters.group = req.query.group;
     if (req.query.family) filters.family = req.query.family;
     if (req.query.genus) filters.genus = req.query.genus;
     if (req.query.species) filters.species = req.query.species;
@@ -26,18 +35,50 @@ router.get("/", async (req, res, next) => {
     if (req.query.country) filters.country = req.query.country;
     if (req.query.origin) filters.origin = req.query.origin;
 
-    if (req.query.from) filters.from = parseInt(req.query.from);
-    if (req.query.to) filters.to = parseInt(req.query.to);
+    const maxDate = parseInt(req.query.maxDate);
+    const minDate = parseInt(req.query.minDate);
+    console.log("minDate", minDate);
+    console.log("maxDate", maxDate);
+
+    //Si hay min y max ==> no funciona porque el filtro es conjunto unión de from y to y no intersección
+    if (req.query.minDate && req.query.maxDate) {
+      let dateRange = [];
+      for (let i = minDate-1; i <= maxDate+1; i++) {
+        dateRange.push(i);
+      }
+      console.log(dateRange);
+     
+      filters.from = { $in: dateRange };      
+      filters.to = { $in: dateRange }; 
+    }
+
+    //Si solo hay min
+
+    //Si solo hay max
+
+
     
+    // if (req.query.minDate && req.query.maxDate) {
+    //   filters.from = { $lte: minDate /* , $lte: minDate */ };
+    //   filters.to = { /* $lte: maxDate, */ $gte: maxDate };
+    // }
+
+    // if (req.query.minDate && !req.query.maxDate) {
+    //   filters.from = { $lte: minDate };
+    // }
+
+    // if (req.query.maxDate && !req.query.minDate) {
+    //   filters.to = { $gte: maxDate };
+    // }
 
     const result = await Item.customFind(filters, sort, skip, limit);
     res.json({ result: result });
-
   } catch (error) {
     next(error);
   }
 });
 
+//TODO: probar con postman
 router.get("/:id", async (req, res, next) => {
   try {
     const _id = req.params.id;
@@ -48,6 +89,7 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+//TODO: Probar con postman
 router.post("/", async (req, res, next) => {
   try {
     const item = new Item({
