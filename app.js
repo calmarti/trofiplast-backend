@@ -24,7 +24,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+
+//rutas del api
 app.use("/apiv1/items", require("./routes/items"));
+app.use("/apiv1/fields", require("./routes/fields"));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -26,7 +26,7 @@ const itemSchema = mongoose.Schema({
   family: { type: String, required: true, index: true },
   genus: { type: String, required: true, index: true },
   species: { type: String, required: true, index: true },
-  area: { type: String },
+  area: { type: String, index: true },
   country: { type: String, index: true },
   from: { type: Number },
   to: { type: Number },
@@ -54,6 +54,15 @@ itemSchema.statics.customFind = async function (filters, sort, skip, limit) {
   result = await query.exec();
 
   return result;
+};
+
+itemSchema.statics.getFieldValues = async function (field) {
+  try {
+    const values = await Item.find().distinct(`${field}`);
+    return values;
+  } catch (err) {
+    next(err);
+  }
 };
 
 const Item = mongoose.model("Item", itemSchema);

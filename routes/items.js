@@ -26,8 +26,7 @@ router.get("/", async (req, res, next) => {
     //if rangeArr.find(elem=>dbArr.includes(elem)) true then there's a match
     //and the matched registers are returned
 
-    if (req.query.group)
-      filters.group = req.query.group;
+    if (req.query.group) filters.group = req.query.group;
     if (req.query.family) filters.family = req.query.family;
     if (req.query.genus) filters.genus = req.query.genus;
     if (req.query.species) filters.species = req.query.species;
@@ -43,33 +42,18 @@ router.get("/", async (req, res, next) => {
     //Si hay min y max ==> no funciona porque el filtro es conjunto unión de from y to y no intersección
     if (req.query.minDate && req.query.maxDate) {
       let dateRange = [];
-      for (let i = minDate-1; i <= maxDate+1; i++) {
+      for (let i = minDate - 1; i <= maxDate + 1; i++) {
         dateRange.push(i);
       }
       console.log(dateRange);
-     
-      filters.from = { $in: dateRange };      
-      filters.to = { $in: dateRange }; 
+
+      filters.from = { $in: dateRange };
+      filters.to = { $in: dateRange };
     }
 
     //Si solo hay min
 
     //Si solo hay max
-
-
-    
-    // if (req.query.minDate && req.query.maxDate) {
-    //   filters.from = { $lte: minDate /* , $lte: minDate */ };
-    //   filters.to = { /* $lte: maxDate, */ $gte: maxDate };
-    // }
-
-    // if (req.query.minDate && !req.query.maxDate) {
-    //   filters.from = { $lte: minDate };
-    // }
-
-    // if (req.query.maxDate && !req.query.minDate) {
-    //   filters.to = { $gte: maxDate };
-    // }
 
     const result = await Item.customFind(filters, sort, skip, limit);
     res.json({ result: result });
@@ -106,6 +90,18 @@ router.post("/", async (req, res, next) => {
     res.status(201).json({ result: savedItem });
   } catch (error) {
     next(error);
+  }
+});
+
+//rutas que devuelven array de valores posibles de los distintos campos
+router.get("/fields", async function (req, res, next) {
+  const field = null;
+  console.log(field)
+  try {
+    const values = await Item.getFieldValues(field);
+    res.json({ result: values });    
+  } catch (err) {
+    next(err);
   }
 });
 
