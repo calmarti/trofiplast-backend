@@ -6,7 +6,7 @@ const Item = require("../models/Item");
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log(req.query);
+    console.log('req.query', req.query);
 
     const filters = {};
     const sort = req.query.sort || "_id";
@@ -55,8 +55,13 @@ router.get("/", async (req, res, next) => {
 
     //Si solo hay max
 
+    //TODO: OJO: agregar campos de fecha al if statement de abajo
     const result = await Item.customFind(filters, sort, skip, limit);
-    res.json({ result: result });
+    if (!req.query.group && !req.query.family && !req.query.genus && !req.query.species && !req.query.area && !req.query.country) {
+      res.json({ result: null });
+    } else {
+      res.json({result: result});
+    }
   } catch (error) {
     next(error);
   }
@@ -96,10 +101,10 @@ router.post("/", async (req, res, next) => {
 //rutas que devuelven array de valores posibles de los distintos campos
 router.get("/fields", async function (req, res, next) {
   const field = null;
-  console.log(field)
+  console.log(field);
   try {
     const values = await Item.getFieldValues(field);
-    res.json({ result: values });    
+    res.json({ result: values });
   } catch (err) {
     next(err);
   }
