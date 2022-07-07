@@ -5,6 +5,7 @@ const Item = require("../models/Item");
 //rutas que devuelven array de valores posibles de los distintos campos
 router.get("/:field", async (req, res, next) => {
   const field = req.params.field;
+  console.log(field);
   try {
     const values = await Item.getFieldValues(field);
     // console.log("antes de filter", values);

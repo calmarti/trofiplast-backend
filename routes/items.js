@@ -54,10 +54,12 @@ router.get("/", async (req, res, next) => {
     //Si solo hay min
 
     //Si solo hay max
-
+    console.log("filters", filters);
     //TODO: OJO: agregar campos de fecha al if statement de abajo
     const result = await Item.customFind(filters, sort, skip, limit);
-    if (!req.query.group && !req.query.family && !req.query.genus && !req.query.species && !req.query.area && !req.query.country) {
+    //capo el endpoint: cuando el submit viene con todos los campos vacíos (es decir, cuando no he seleccionado ningún filtro) ni siquiera devuelvo un array vacío sino null
+    //Nota: por defecto si todos los campos vienen vacíos devolvería un array con todos los items de la bd
+    if (!req.query.group && !req.query.family && !req.query.genus && !req.query.species && !req.query.area && !req.query.country && !req.query.origin) {
       res.json({ result: null });
     } else {
       res.json({result: result});
