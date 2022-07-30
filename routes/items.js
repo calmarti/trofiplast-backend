@@ -6,7 +6,7 @@ const Item = require("../models/Item");
 
 router.get("/", async (req, res, next) => {
   try {
-    console.log('req.query', req.query);
+    console.log("req.query", req.query);
 
     const filters = {};
     const sort = req.query.sort || "_id";
@@ -25,14 +25,14 @@ router.get("/", async (req, res, next) => {
     //use some setter function (schema) to do something like:
     //if rangeArr.find(elem=>dbArr.includes(elem)) true then there's a match
     //and the matched registers are returned
-
     if (req.query.group) filters.group = req.query.group;
+    if (req.query.order) filters.order = req.query.order;
     if (req.query.family) filters.family = req.query.family;
     if (req.query.genus) filters.genus = req.query.genus;
     if (req.query.species) filters.species = req.query.species;
     if (req.query.area) filters.area = req.query.area;
-    if (req.query.country) filters.country = req.query.country;
     if (req.query.origin) filters.origin = req.query.origin;
+    if (req.query.country) filters.country = req.query.country;
 
     const maxDate = parseInt(req.query.maxDate);
     const minDate = parseInt(req.query.minDate);
@@ -59,10 +59,19 @@ router.get("/", async (req, res, next) => {
     const result = await Item.customFind(filters, sort, skip, limit);
     //capo el endpoint: cuando el submit viene con todos los campos vacíos (es decir, cuando no he seleccionado ningún filtro) ni siquiera devuelvo un array vacío sino null
     //Nota: por defecto si todos los campos vienen vacíos devolvería un array con todos los items de la bd
-    if (!req.query.group && !req.query.family && !req.query.genus && !req.query.species && !req.query.area && !req.query.country && !req.query.origin) {
+    if (
+      !req.query.group &&
+      !req.query.order &&
+      !req.query.family &&
+      !req.query.genus &&
+      !req.query.species &&
+      !req.query.area &&
+      !req.query.country &&
+      !req.query.origin
+    ) {
       res.json({ result: null });
     } else {
-      res.json({result: result});
+      res.json({ result: result });
     }
   } catch (error) {
     next(error);
@@ -84,12 +93,14 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const item = new Item({
-      group: req.body.taxonomic_group,
+      group: req.body.group,
+      order: req.body.order,
       family: req.body.family,
       genus: req.body.genus,
       species: req.body.species,
       location: req.body.location,
       country: req.body.country,
+      origin: req.body.origin,
       date: req.body.date,
       reference: req.body.date,
     });
