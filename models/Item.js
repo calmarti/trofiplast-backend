@@ -30,14 +30,14 @@ const itemSchema = mongoose.Schema({
   area: { type: String, index: true },
   origin: { type: String, index: true },
   country: { type: String, index: true },
-  from: { type: Number }, 
+  from: { type: Number },
   to: { type: Number },
   // date1: { type: Date, set: changeDateFormat },
   // date2: { type: Date, set: changeDateFormat },
   // date3: { type: Date, set: changeDateFormat },
 
   //origin: {type: String, required: true},  //seawater, freshwater, land, experiment
-  origin: { type: String },
+  sampling_info: { type: String },
   summary: { type: String },
   reference: { type: String },
   href: { type: String }, //type preeliminar, tal vez será un custom type
