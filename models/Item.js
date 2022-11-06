@@ -18,9 +18,7 @@ const mongoose = require("mongoose");
 // }
 
 const itemSchema = mongoose.Schema({
-  group: {
-    type: String,
-    index: true,
+  group: { type: String, index: true,
   },
   order: { type: String, index: true },
   family: { type: String, index: true },
