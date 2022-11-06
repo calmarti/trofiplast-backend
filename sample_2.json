@@ -869,6 +869,7 @@
             "species": "Dicentrarchus labrax",
             "area": "Sicily",
             "country": "Italy",
+            "from":"",
             "to": "2015",
             "sampling_info": "Before 2015",
             "origin": "Laboratory Experiment",

@@ -20,13 +20,12 @@ const mongoose = require("mongoose");
 const itemSchema = mongoose.Schema({
   group: {
     type: String,
-    required: true,
     index: true,
   },
   order: { type: String, index: true },
   family: { type: String, index: true },
   genus: { type: String, index: true },
-  species: { type: String, required: true, index: true },
+  species: { type: String, index: true },
   area: { type: String, index: true },
   origin: { type: String, index: true },
   country: { type: String, index: true },
