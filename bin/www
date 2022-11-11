@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('cronoplast:server');
+var debug = require('debug')('trofiplast:server');
 var http = require('http');
 
 /**
